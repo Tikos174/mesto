@@ -3,6 +3,8 @@
     background-repeat: no-repeat;
     min-width: 22px;
     min-height: 19px;
+    border: none;
+    background-color: #FFFFFF;
     cursor: pointer;
 }
 
