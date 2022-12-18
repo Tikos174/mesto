@@ -1,13 +1,14 @@
-.popup__text-block{
-    min-width: 358px;
-    min-height: 27px;
-    border-bottom: 1px solid #000000;
-    margin-bottom: 30px;
+.popup__text-block {
+  min-width: 358px;
+  min-height: 27px;
+  border-bottom: 1px solid #000000;
+  margin-bottom: 30px;
 }
 
 @media screen and (max-width: 320px) {
-    .popup__text-block {
-      min-width: 238px;
-      min-height: 27px;
-    }
+  .popup__text-block {
+    min-width: 238px;
+    min-height: 27px;
+    margin-bottom: 27px;
   }
+}
