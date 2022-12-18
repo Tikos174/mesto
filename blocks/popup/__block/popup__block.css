@@ -1,0 +1,14 @@
+.popup__block {
+  width: 100%;
+  min-height: 27px;
+  border: none;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+@media screen and (max-width: 320px) {
+  .popup__block {
+    max-width: 238px;
+  }
+}

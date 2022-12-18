@@ -1,0 +1,32 @@
+.popup__safe{
+    min-width: 358px;
+    min-height: 50px;
+    margin: 0;
+    color: #FFFFFF;
+    background: #000000;
+    border: none;
+    border-radius: 2px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 18px;
+}
+
+.popup__safe:hover{
+    background: #000000;
+    opacity: 0.8;
+}
+
+@media screen and (max-width: 480px) {
+    .popup__safe {
+        min-width: 238px;
+        min-height: 46px;
+    }
+  }
+  

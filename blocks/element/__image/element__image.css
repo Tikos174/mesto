@@ -1,0 +1,5 @@
+.element__image{
+    max-width: 100%;
+    background-image: url(../../../image/Karachaev.jpg);
+    background-repeat: round;
+}
