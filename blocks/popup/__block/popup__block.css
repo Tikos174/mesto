@@ -7,7 +7,7 @@
   line-height: 17px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 520px) {
   .popup__block {
     max-width: 238px;
   }
