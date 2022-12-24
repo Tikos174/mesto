@@ -5,8 +5,8 @@ let closepopUp = document.querySelector(".popup__close");
 let nameUser = document.querySelector(".profile__name");
 let profession = document.querySelector(".profile__text");
 let formElement = document.querySelector(".popup__container");
-let nameInput = document.querySelector(".popup__name_input-save");
-let jobInput = document.querySelector(".popup__about_input-save");
+let nameInput = document.querySelector(".popup__name_type_input");
+let jobInput = document.querySelector(".popup__about_type_input");
 
 openPopUp.addEventListener("click", handleOpen);
 function handleOpen() {
