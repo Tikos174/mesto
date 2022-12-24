@@ -1,14 +1,15 @@
-.popup__text-block {
+.popup__input {
   min-width: 358px;
   min-height: 27px;
-  border-bottom: 1px solid #000000;
   margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px
 }
 
 @media screen and (max-width: 520px) {
-  .popup__text-block {
+  .popup__input {
     min-width: 238px;
-    min-height: 27px;
     margin-bottom: 27px;
   }
 }

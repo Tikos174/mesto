@@ -1,9 +1,9 @@
 .profile__button{
     min-width: 24px;
     min-height: 24px;
-    background-image: url(../../../image/Vector\ iwo.png);
+    background-image: url(../../../image/EditButton.svg);
     border: 1px solid #FFFFFF;
-    background-color: #000000;
+    background-color: transparent;
     background-repeat: no-repeat;
     background-position: center;
     padding: 0;

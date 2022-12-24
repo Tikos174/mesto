@@ -8,10 +8,8 @@
   padding: 0;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 600px) {
   .element {
-    display: grid;
-    grid-template-columns: minmax(auto, 284px);
-    gap: 19px;
+    grid-template-columns: minmax(284px, 600px);
   }
 }

@@ -4,10 +4,10 @@
     min-width: 22px;
     min-height: 19px;
     border: none;
-    background-color: #FFFFFF;
+    background-color: transparent;
     cursor: pointer;
 }
 
 .element__like:hover{
-    opacity: 0.6;
+    opacity: 0.5;
 }
