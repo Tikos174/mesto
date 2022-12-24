@@ -6,9 +6,10 @@
   line-height: 48px;
   text-overflow: ellipsis;
   overflow: hidden;
+  white-space: nowrap;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 380px) {
   .profile__name {
     font-size: 27px;
     line-height: 33px;

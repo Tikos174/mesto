@@ -10,6 +10,13 @@
 
 @media screen and (max-width: 600px) {
   .element {
-    grid-template-columns: minmax(284px, 600px);
+    grid-template-columns: minmax(auto, 600px);
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .element {
+    grid-template-columns: minmax(auto, 284px);
+    justify-content: center;
   }
 }
