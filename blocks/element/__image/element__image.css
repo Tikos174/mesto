@@ -1,6 +1,9 @@
 .element__image{
-    min-width: 100%;
+    min-width: 282px;
     max-height: 282px;
+    object-fit: fill;
+    cursor: pointer;
+    aspect-ratio: 1 / 1;
 }
 
 @media screen and (max-width: 600px) {
