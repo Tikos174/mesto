@@ -9,10 +9,10 @@ let nameInput = document.querySelector(".popup__input-save_type_name");
 let jobInput = document.querySelector(".popup__input-save_type_about");
 
 let openPopUpProfil = document.querySelector(".profile__button-add");
-let popUpProfil = document.querySelector(".popup__new");
+let popUpProfil = document.querySelector(".popup__element");
 let popUpProfilSave = document.querySelector(".popup__safe");
 let popUpSaveNew = document.querySelector(".popup__safe-New");
-let closePopUpProfil = document.querySelector(".popup__close-New");
+let closePopUpProfil = document.querySelector(".popup__element-close");
 const popBlockTextProfil = document.querySelector(".popup__input-save_type_nameNew");
 const popBlockImgProfil = document.querySelector(".popup__input-save_type_aboutNew");
 
