@@ -9,7 +9,7 @@ let nameInput = document.querySelector(".popup__input-save_type_name");
 let jobInput = document.querySelector(".popup__input-save_type_about");
 
 let openPopUpProfil = document.querySelector(".profile__button-add");
-let popUpProfil = document.querySelector(".popup__element");
+let popUpProfil = document.querySelector("#popup__element");
 let popUpProfilSave = document.querySelector(".popup__safe");
 let popUpSaveNew = document.querySelector(".popup__safe-New");
 let closePopUpProfil = document.querySelector(".popup__element-close");
@@ -138,7 +138,7 @@ container.addEventListener("click", clickDelete);
 container.addEventListener("click", clickOpenModel);
 
 const openImage = document.querySelectorAll(".element__image");
-const popUpOpenImage = document.querySelector(".popup__Img");
+const popUpOpenImage = document.querySelector("#popup__Img");
 
 openImage.forEach(function (button) {
   button.addEventListener("click", imgOpen);
