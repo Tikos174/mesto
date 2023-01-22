@@ -12,7 +12,7 @@ const inputNameProfession = document.querySelector(
 );
 
 const buttonOpenEditCard = document.querySelector(".profile__button-add");
-const popupEditCard = document.querySelector(".popup_edit-card");
+const popupEditCard = document.querySelector(".popup_add-card");
 const buttonSaveEditCard = document.querySelector(".popup__safe-New");
 const buttonCloseEditCard = document.querySelector(".popup__element-close");
 const inputTextCard = document.querySelector(".popup__input-save_type_nameNew");
@@ -57,11 +57,13 @@ const initialCards = [
 // Создание карточек из массива
 function createCard(card) {
   const elementBlockCard = elementLi.cloneNode(true);
-  
+  const elementImage = elementBlockCard.querySelector(".element__image");
+  const elementText = elementBlockCard.querySelector(".element__text");
+
   // значение из массива
-  elementBlockCard.querySelector(".element__image").src = card.link;
-  elementBlockCard.querySelector(".element__text").textContent = card.name;
-  elementBlockCard.querySelector(".element__image").alt = card.name;
+  elementImage.src = card.link;
+  elementText.textContent = card.name;
+  elementImage.alt = card.name;
 
   container.addEventListener("click", clickLike);
   container.addEventListener("click", clickDeleteLike);
@@ -88,6 +90,8 @@ function handleFormProfil(evt) {
 
 buttonSaveEditCard.addEventListener("click", handleFormProfil);
 
+
+// Функция лайков
 function clickLike(event) {
   const element = event.target;
   if (element.classList.contains("element__like")) {
@@ -99,6 +103,7 @@ function clickLike(event) {
   }
 }
 
+// Функция удаление
 function clickDeleteLike(event) {
   const element = event.target;
   if (element.className === "element__delite") {
@@ -114,7 +119,7 @@ function clickOpenImage(event) {
   popupText.textContent = element.alt;
 }
 
-const popUpOpenImage = document.querySelector(".popup_edit-image");
+const popUpOpenImage = document.querySelector(".popup_image");
 const buttonOpenImage = document.querySelectorAll(".element__image");
 
 buttonOpenEditProfile.addEventListener("click", () => openPopup("profile"))
