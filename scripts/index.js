@@ -125,17 +125,18 @@ function deleteCard(event) {
   }
 }
 
-buttonOpenEditProfile.addEventListener("click", () =>
+buttonOpenEditProfile.addEventListener("click", function () {
   openPopup(popupEditProfile)
-);
-buttonOpenEditCard.addEventListener("click", () => 
-openPopup(popupEditCard)
-);
+  inputProfile()
+});
+
+buttonOpenEditCard.addEventListener("click", function () {
+  openPopup(popupEditCard);
+  resetAddCardFormInputs();
+});
 
 function openPopup(popup) {
   popup.classList.add("popup_display-open");
-  inputProfile();
-  resetAddCardFormInputs();
 }
 
 function inputProfile() {
