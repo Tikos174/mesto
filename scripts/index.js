@@ -27,8 +27,7 @@ const buttonClosePopupImage = document.querySelector(".popup__closeImg");
 
 const cardTemplate = document.querySelector("#element-li").content;
 const container = document.querySelector(".element");
-const popUpOpenImage = document.querySelector(".popup_image");
-const popup = document.querySelector(".popup");
+const popupEdit = document.querySelector(".popup");
 
 const initialCards = [
   {
@@ -113,7 +112,7 @@ function clickOpenImage(event) {
   popupImage.src = element.src;
   popupText.textContent = element.alt;
 
-  openPopup(popUpOpenImage);
+  openPopup(popupImage);
 }
 
 // Функция удаление
@@ -135,8 +134,8 @@ buttonOpenEditCard.addEventListener("click", () => {
   resetAddCardFormInputs();
 });
 
-function openPopup(popup) {
-  popup.classList.add("popup_display-open");
+function openPopup(popupEdit) {
+  popupEdit.classList.add("popup_display-open");
 }
 
 function inputProfile() {
@@ -153,6 +152,7 @@ function submitEditProfileForm(evt) {
   evt.preventDefault();
   nameUser.textContent = inputNameUser.value;
   nameProfession.textContent = inputNameProfession.value;
+
   closePopup(popupEditProfile);
 }
 
@@ -169,9 +169,9 @@ buttonSaveEditProfile.addEventListener("click", () =>
 );
 
 buttonClosePopupImage.addEventListener("click", () =>
-  closePopup(popUpOpenImage)
+  closePopup(popupImage)
 );
 
-function closePopup(popup) {
-  popup.classList.remove("popup_display-open");
+function closePopup(popupEdit) {
+  popupEdit.classList.remove("popup_display-open");
 }
