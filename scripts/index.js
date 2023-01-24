@@ -113,7 +113,7 @@ function clickOpenImage(event) {
   popupImage.src = element.src;
   popupText.textContent = element.alt;
 
-  openPopup(popUpOpenImage)
+  openPopup(popUpOpenImage);
 }
 
 // Функция удаление
@@ -125,12 +125,12 @@ function deleteCard(event) {
   }
 }
 
-buttonOpenEditProfile.addEventListener("click", function () {
-  openPopup(popupEditProfile)
-  inputProfile()
+buttonOpenEditProfile.addEventListener("click", () => {
+  openPopup(popupEditProfile);
+  inputProfile();
 });
 
-buttonOpenEditCard.addEventListener("click", function () {
+buttonOpenEditCard.addEventListener("click", () => {
   openPopup(popupEditCard);
   resetAddCardFormInputs();
 });
@@ -161,12 +161,13 @@ formElement.addEventListener("submit", submitEditProfileForm);
 buttonCloseEditProfile.addEventListener("click", () =>
   closePopup(popupEditProfile)
 );
-buttonCloseEditCard.addEventListener("click", () => 
-closePopup(popupEditCard)
-);
+
+buttonCloseEditCard.addEventListener("click", () => closePopup(popupEditCard));
+
 buttonSaveEditProfile.addEventListener("click", () =>
   closePopup(popupEditProfile)
 );
+
 buttonClosePopupImage.addEventListener("click", () =>
   closePopup(popUpOpenImage)
 );
