@@ -28,6 +28,7 @@ const buttonClosePopupImage = document.querySelector(".popup__closeImg");
 const cardTemplate = document.querySelector("#element-li").content;
 const container = document.querySelector(".element");
 const popupEdit = document.querySelector(".popup");
+const popupEditImage = document.querySelector(".popup_image");
 
 const initialCards = [
   {
@@ -112,7 +113,7 @@ function clickOpenImage(event) {
   popupImage.src = element.src;
   popupText.textContent = element.alt;
 
-  openPopup(popupImage);
+  openPopup(popupEditImage);
 }
 
 // Функция удаление
@@ -169,7 +170,7 @@ buttonSaveEditProfile.addEventListener("click", () =>
 );
 
 buttonClosePopupImage.addEventListener("click", () =>
-  closePopup(popupImage)
+  closePopup(popupEditImage)
 );
 
 function closePopup(popupEdit) {
