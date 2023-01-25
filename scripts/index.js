@@ -27,8 +27,7 @@ const buttonClosePopupImage = document.querySelector(".popup__closeImg");
 
 const cardTemplate = document.querySelector("#element-li").content;
 const container = document.querySelector(".element");
-const popupEdit = document.querySelector(".popup");
-const popupEditImage = document.querySelector(".popup_image");
+const popupEditImage = document.querySelector(".popup_image-window");
 
 const initialCards = [
   {
