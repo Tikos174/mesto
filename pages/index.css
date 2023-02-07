@@ -45,3 +45,5 @@
 @import url(../blocks/popup/__text-profil/popup__text-profil.css);
 @import url(../blocks/popup/__block/popup__block.css);
 @import url(../blocks/popup/_image-window/popup_image-window.css);
+@import url(../blocks/popup/__error_visible/popup__error_visible.css);
+@import url(../blocks/popup/__input_type_error/popup__input_type_error.css);

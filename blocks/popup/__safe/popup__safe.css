@@ -18,6 +18,14 @@
   margin-top: 18px;
 }
 
+.popup__safe:disabled{
+  opacity: 0.2;
+}
+
+.popup__safe:disabled:hover{
+  opacity: 0.2;
+}
+
 .popup__safe:hover {
   background: #000000;
   opacity: 0.8;

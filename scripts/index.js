@@ -29,6 +29,9 @@ const cardTemplate = document.querySelector("#element-li").content;
 const container = document.querySelector(".element");
 const popupEditImage = document.querySelector(".popup_image-window");
 
+const popupList = document.querySelectorAll(".popup");
+
+
 const initialCards = [
   {
     name: "Архыз",
@@ -175,3 +178,19 @@ buttonClosePopupImage.addEventListener("click", () =>
 function closePopup(popupEdit) {
   popupEdit.classList.remove("popup_display-open");
 }
+
+popupList.forEach((popupOverlayClose) => {
+  popupOverlayClose.addEventListener("mousedown", (evt) => {
+    if (evt.target.classList.contains("popup_display-open")) {
+      closePopup(popupOverlayClose)
+    }
+  })
+})
+
+document.addEventListener("keydown", function (evt) {
+  if (evt.key === "Escape") {
+    closePopup(popupEditProfile);
+    closePopup(popupEditCard);
+    closePopup(popupEditImage);
+  }
+});

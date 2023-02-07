@@ -49,20 +49,30 @@
         <div class="popup__container">
           <button type="button" class="popup__close"></button>
           <h3 class="popup__text">Редактировать профиль</h3>
-          <form name="name-input" class="popup__input">
+          <form name="name-input" class="popup__input" novalidate>
             <input
+              id="name-link"
+              required
+              minlength="2"
+              maxlength="40"
               type="text"
               name="name"
               class="popup__input-save popup__input-save_type_name"
               placeholder="Имя"
             />
+            <span id="name-link-error" class="popup__input_type_error"></span>
             <input
+              id="about-link"
+              required
+              minlength="2"
+              maxlength="200"
               type="text"
               name="about"
               class="popup__input-save popup__input-save_type_about"
               placeholder="О себе"
             />
-            <button type="submit" class="popup__safe">Сохранить</button>
+            <span id="about-link-error" class="popup__input_type_error"></span>
+            <button type="submit" class="popup__safe popup__button">Сохранить</button>
           </form>
         </div>
       </div>
@@ -70,20 +80,28 @@
         <div class="popup__container">
           <button type="button" class="popup__close popup__element-close"></button>
           <h3 class="popup__text">Новое место</h3>
-          <form name="name-input-new" class="popup__input popup__input-New">
+          <form name="name-input" class="popup__input popup__input-New" novalidate>
             <input
+            id="names-link"
+            required
+            minlength="2"
+            maxlength="40"
               type="text"
               name="name"
               class="popup__input-save popup__input-save_type_nameNew"
               placeholder="Название"
             />
+            <span id="names-link-error" class="popup__input_type_error"></span>
             <input
-              type="text"
+              id="abouts-link"
+              required
+              type="url"
               name="about"
               class="popup__input-save popup__input-save_type_aboutNew"
               placeholder="Сcылка на картинку"
             />
-            <button type="submit" class="popup__safe popup__safe-New">
+            <span id="abouts-link-error" class="popup__input_type_error"></span>
+            <button type="submit" class="popup__safe popup__safe-New popup__button" disabled>
               Сохранить
             </button>
           </form>
@@ -100,5 +118,6 @@
       </div>
     </div>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>

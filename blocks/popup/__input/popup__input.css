@@ -3,7 +3,7 @@
   min-height: 27px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 11px;
 }
 
 @media screen and (max-width: 520px) {
