@@ -31,7 +31,6 @@ const popupEditImage = document.querySelector(".popup_image-window");
 
 const popupList = document.querySelectorAll(".popup");
 
-
 const initialCards = [
   {
     name: "Архыз",
@@ -133,12 +132,14 @@ buttonOpenEditProfile.addEventListener("click", () => {
 });
 
 buttonOpenEditCard.addEventListener("click", () => {
+  buttonSaveEditCard.disabled = true;
   openPopup(popupEditCard);
   resetAddCardFormInputs();
 });
 
 function openPopup(popupEdit) {
   popupEdit.classList.add("popup_display-open");
+  document.addEventListener("keydown", popupCloseOverlay);
 }
 
 function inputProfile() {
@@ -165,7 +166,9 @@ buttonCloseEditProfile.addEventListener("click", () =>
   closePopup(popupEditProfile)
 );
 
-buttonCloseEditCard.addEventListener("click", () => closePopup(popupEditCard));
+buttonCloseEditCard.addEventListener("click", () => {
+  closePopup(popupEditCard);
+});
 
 buttonSaveEditProfile.addEventListener("click", () =>
   closePopup(popupEditProfile)
@@ -177,20 +180,20 @@ buttonClosePopupImage.addEventListener("click", () =>
 
 function closePopup(popupEdit) {
   popupEdit.classList.remove("popup_display-open");
+  document.removeEventListener("keydown", popupCloseOverlay);
 }
 
 popupList.forEach((popupOverlayClose) => {
   popupOverlayClose.addEventListener("mousedown", (evt) => {
     if (evt.target.classList.contains("popup_display-open")) {
-      closePopup(popupOverlayClose)
+      closePopup(popupOverlayClose);
     }
-  })
-})
-
-document.addEventListener("keydown", function (evt) {
-  if (evt.key === "Escape") {
-    closePopup(popupEditProfile);
-    closePopup(popupEditCard);
-    closePopup(popupEditImage);
-  }
+  });
 });
+
+function popupCloseOverlay(evt) {
+  const openModal = document.querySelector(".popup_display-open");
+  if (evt.key === "Escape") {
+    closePopup(openModal);
+  }
+}

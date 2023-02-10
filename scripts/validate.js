@@ -7,18 +7,19 @@ const enableValidation = {
   errorClass: "popup__error_visible",
 };
 
-function formValidation(config) {
+function enableValidationCheck(config) {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
 
   formList.forEach((form) => {
-    formIputAdd(form, config);
+    enableValidationInput(form, config);
     form.addEventListener("input", () => {
-      buttonSafe(form, config);
+      disabledButtonSafe(form, config);
     });
   });
 }
 
-function formHandleInput(event, config) {
+// проверка валидации 
+function handleFormAddInput(event, config) {
   const input = event.target;
   const inputId = input.id;
   const errorText = document.querySelector(`#${inputId}-error`);
@@ -32,7 +33,7 @@ function formHandleInput(event, config) {
   }
 }
 
-function buttonSafe(form, config) {
+function disabledButtonSafe(form, config) {
   const buttonClickSafe = form.querySelector(config.submitButtonSelector);
   const buttonSwitch = form.checkValidity();
 
@@ -41,14 +42,14 @@ function buttonSafe(form, config) {
   buttonClickSafe.classList.toggle(config.inactiveButtonClass, !buttonSwitch);
 }
 
-function formIputAdd(form, config) {
+function enableValidationInput(form, config) {
   const imputList = Array.from(form.querySelectorAll(config.inputSelector));
 
   imputList.forEach(function (item) {
     item.addEventListener("input", (event) => {
-      formHandleInput(event, config);
+      handleFormAddInput(event, config);
     });
   });
 }
 
-formValidation(enableValidation);
+enableValidationCheck(enableValidation);
