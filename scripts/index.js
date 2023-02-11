@@ -139,7 +139,7 @@ buttonOpenEditCard.addEventListener("click", () => {
 
 function openPopup(popupEdit) {
   popupEdit.classList.add("popup_display-open");
-  document.addEventListener("keydown", popupCloseOverlay);
+  document.addEventListener("keydown", closePopupEscape);
 }
 
 function inputProfile() {
@@ -180,7 +180,7 @@ buttonClosePopupImage.addEventListener("click", () =>
 
 function closePopup(popupEdit) {
   popupEdit.classList.remove("popup_display-open");
-  document.removeEventListener("keydown", popupCloseOverlay);
+  document.removeEventListener("keydown", closePopupEscape);
 }
 
 popupList.forEach((popupOverlayClose) => {
@@ -191,9 +191,9 @@ popupList.forEach((popupOverlayClose) => {
   });
 });
 
-function popupCloseOverlay(evt) {
-  const openModal = document.querySelector(".popup_display-open");
+function closePopupEscape(evt) {
   if (evt.key === "Escape") {
+    const openModal = document.querySelector(".popup_display-open");
     closePopup(openModal);
   }
 }
