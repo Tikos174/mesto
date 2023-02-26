@@ -1,3 +1,6 @@
+import { Card } from "./Card.js";
+import {FormValidator} from "./FormValidator.js"
+
 const buttonOpenEditProfile = document.querySelector(".profile__button");
 const popupEditProfile = document.querySelector(".popup_edit-profile");
 const buttonCloseEditProfile = document.querySelector(".popup__close");
@@ -25,7 +28,7 @@ const popupImage = document.querySelector(".popup__image");
 const popupText = document.querySelector(".popup__text-profil");
 const buttonClosePopupImage = document.querySelector(".popup__closeImg");
 
-const cardTemplate = document.querySelector("#element-li").content;
+// const cardTemplate = document.querySelector("#element-li").content;
 const container = document.querySelector(".element");
 const popupEditImage = document.querySelector(".popup_image-window");
 
@@ -58,73 +61,36 @@ const initialCards = [
   },
 ];
 
-// Создание карточек из массива
-function createCard(card) {
-  const elementBlockCard = cardTemplate.cloneNode(true);
-  const elementImage = elementBlockCard.querySelector(".element__image");
-  const elementText = elementBlockCard.querySelector(".element__text");
-  const elementike = elementBlockCard.querySelector(".element__like");
-  const elementDeletClick = elementBlockCard.querySelector(".element__delite");
+const enableValidation = {
+  formSelector: ".popup__input",
+  inputSelector: ".popup__input-save",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  errorClass: "popup__error_visible",
+};
 
-  // значение из массива
-  elementImage.src = card.link;
-  elementText.textContent = card.name;
-  elementImage.alt = card.name;
+initialCards.forEach((cards) => {
+  const card = new Card(cards, ".element__list");
+  const elementBlockCard = card.generateCard();
 
-  elementike.addEventListener("click", clickLike);
-  elementDeletClick.addEventListener("click", deleteCard);
-  elementImage.addEventListener("click", clickOpenImage);
-
-  return elementBlockCard;
-}
-
-// Функция лайков
-function clickLike(event) {
-  const element = event.target;
-  if (element.classList.contains("element__like-active")) {
-    element.classList.remove("element__like-active");
-  } else {
-    element.classList.add("element__like-active");
-  }
-}
-
-initialCards.forEach(function (element) {
-  const card = createCard(element);
-  container.prepend(card);
+  container.append(elementBlockCard);
 });
 
-// Внесение новых данных
+// Внесение новых данных в профиль
 function submitAddCardForm(evt) {
   evt.preventDefault();
-  const newCard = {
+  const inputnewCard = {
     name: inputTextCard.value,
     link: inputImageCard.value,
   };
 
-  const card = createCard(newCard);
-  container.prepend(card);
+  const cardElement = new Card(inputnewCard);
+  container.prepend(cardElement.generateCard());
+  
   closePopup(popupEditCard);
 }
 
 formElementCard.addEventListener("submit", submitAddCardForm);
-
-function clickOpenImage(event) {
-  const element = event.target;
-  popupImage.alt = element.alt;
-  popupImage.src = element.src;
-  popupText.textContent = element.alt;
-
-  openPopup(popupEditImage);
-}
-
-// Функция удаление
-function deleteCard(event) {
-  const element = event.target;
-  if (element.className === "element__delite") {
-    const item = element.closest(".element__list");
-    item.remove();
-  }
-}
 
 buttonOpenEditProfile.addEventListener("click", () => {
   openPopup(popupEditProfile);
@@ -197,3 +163,15 @@ function handleClosePopup (evt) {
     closePopup(openModal);
   }
 }
+
+// Валидацию
+const forms = document.querySelectorAll(".popup__input");
+const nodeForms = Array.from(forms)
+
+nodeForms.forEach(form => {
+  const listValidation = new FormValidator(enableValidation, form)
+
+  listValidation.enableValidation()
+})
+
+export {popupText, popupImage, popupEditImage, openPopup};
