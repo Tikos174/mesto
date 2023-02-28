@@ -69,11 +69,13 @@ const enableValidation = {
   errorClass: "popup__error_visible",
 };
 
-initialCards.forEach((cards) => {
+function addСards (cards) {
   const card = new Card(cards, ".element__list");
-  const elementBlockCard = card.generateCard();
+  return card.generateCard();
+}
 
-  container.append(elementBlockCard);
+initialCards.forEach((cards) => {
+  container.append(addСards(cards));
 });
 
 // Внесение новых данных в профиль
@@ -84,9 +86,7 @@ function submitAddCardForm(evt) {
     link: inputImageCard.value,
   };
 
-  const cardElement = new Card(inputnewCard);
-  container.prepend(cardElement.generateCard());
-  
+  container.prepend(addСards(inputnewCard));
   closePopup(popupEditCard);
 }
 
@@ -94,7 +94,7 @@ formElementCard.addEventListener("submit", submitAddCardForm);
 
 buttonOpenEditProfile.addEventListener("click", () => {
   openPopup(popupEditProfile);
-  inputProfile();
+  dataInputProfile();
 });
 
 buttonOpenEditCard.addEventListener("click", () => {
@@ -108,7 +108,7 @@ function openPopup(popupEdit) {
   document.addEventListener("keydown", handleClosePopup);
 }
 
-function inputProfile() {
+function dataInputProfile() {
   inputNameUser.value = nameUser.textContent;
   inputNameProfession.value = nameProfession.textContent;
 }
@@ -169,9 +169,9 @@ const forms = document.querySelectorAll(".popup__input");
 const nodeForms = Array.from(forms)
 
 nodeForms.forEach(form => {
-  const listValidation = new FormValidator(enableValidation, form)
+  const validationInput = new FormValidator(enableValidation, form)
 
-  listValidation.enableValidation()
+  validationInput.enableValidation()
 })
 
 export {popupText, popupImage, popupEditImage, openPopup};

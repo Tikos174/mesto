@@ -27,6 +27,7 @@ class Card {
     this._buttonLike = this._cardTemplate.querySelector(".element__like");
     this._buttonDeleteCard =
       this._cardTemplate.querySelector(".element__delite");
+    this._handleDeteleCard = this._cardTemplate.querySelector(".element__list");
 
     this._cardTemplateName.textContent = this._name;
     this._cardTemplateImg.src = this._link;
@@ -50,24 +51,18 @@ class Card {
   }
 
   _handleLike() {
-    const elementLike = this._buttonLike.closest(".element__like");
-    if (elementLike.classList.contains("element__like-active")) {
-      elementLike.classList.remove("element__like-active");
-    } else {
-      elementLike.classList.add("element__like-active");
-    }
+    this._buttonLike.classList.toggle("element__like-active");
   }
 
   _handleOpenPopup() {
-    popupText.textContent = this._cardTemplateName.textContent;
-    popupImage.src = this._cardTemplateImg.src;
-    popupImage.alt = this._cardTemplateImg.alt;
+    popupText.textContent = this._name;
+    popupImage.src = this._link
+    popupImage.alt = this._name;
     openPopup(popupEditImage);
   }
 
   _handleDeleteCard() {
-    const item = this._buttonDeleteCard.closest(".element__list");
-    item.remove();
+    this._handleDeteleCard.remove();
   }
 }
 
