@@ -69,13 +69,13 @@ const enableValidation = {
   errorClass: "popup__error_visible",
 };
 
-function addСards (cards) {
-  const card = new Card(cards, ".element__list");
-  return card.generateCard();
+function addСards (card) {
+  const newCard = new Card (card, ".element__list");
+  return newCard.generateCard();
 }
 
-initialCards.forEach((cards) => {
-  container.append(addСards(cards));
+initialCards.forEach((card) => {
+  container.append(addСards(card));
 });
 
 // Внесение новых данных в профиль

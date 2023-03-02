@@ -1,9 +1,10 @@
 import { popupText, popupImage, popupEditImage, openPopup } from "./index.js";
 
 class Card {
-  constructor(data) {
+  constructor(data, elementClass) {
     this._name = data.name;
     this._link = data.link;
+    this._elementClass = elementClass;
     // this._templateSelector = templateSelector;
   }
 
@@ -27,7 +28,7 @@ class Card {
     this._buttonLike = this._cardTemplate.querySelector(".element__like");
     this._buttonDeleteCard =
       this._cardTemplate.querySelector(".element__delite");
-    this._handleDeteleCard = this._cardTemplate.querySelector(".element__list");
+    this._elementCard = this._cardTemplate.querySelector(this._elementClass);
 
     this._cardTemplateName.textContent = this._name;
     this._cardTemplateImg.src = this._link;
@@ -62,7 +63,7 @@ class Card {
   }
 
   _handleDeleteCard() {
-    this._handleDeteleCard.remove();
+    this._elementCard.remove()
   }
 }
 
