@@ -17,7 +17,6 @@ class PopupWithForm extends Popup {
     });
     
     return this._formValues;
-
   }
 
   setEventListeners() {

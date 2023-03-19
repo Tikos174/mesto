@@ -2,6 +2,7 @@ class FormValidator {
   constructor(config, form) {
     this._config = config;
     this._form = form;
+    this.disabledButton()
   }
 
   enableValidation(){
@@ -14,6 +15,11 @@ class FormValidator {
   _activeValidation(event){
     this._handleFormAddInput(event)
     this._disabledButtonSafe()
+  }
+
+  disabledButton(){
+    const buttonSafeCard = document.querySelector('.popup__safe-New')
+    buttonSafeCard.setAttribute('disabled', true)
   }
 
   _handleFormAddInput(event) {

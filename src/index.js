@@ -1,16 +1,19 @@
 
-import '../src/index.css'; // добавьте импорт главного файла стилей
-import { Card } from "../scripts/Card.js";
-import { FormValidator } from "../scripts/FormValidator.js";
-import { Popup } from "../scripts/Popup.js";
-import { Section } from "../scripts/Section.js";
-import { PopupWithImage } from "../scripts/PopupWithImage.js";
-import { PopupWithForm } from "../scripts/PopupWithForm.js";
-import { UserInfo } from "../scripts/UserInfo.js";
+import '../src/index.css';
+import { Card } from "./components/Card.js";
+import { FormValidator } from "./components/FormValidator.js";
+import { Popup } from "./components/Popup.js";
+import { Section } from "./components/Section.js";
+import { PopupWithImage } from "./components/PopupWithImage.js";
+import { PopupWithForm } from "./components/PopupWithForm.js";
+import { UserInfo } from "./components/UserInfo.js";
 
-console.log('работает')
+const inputTextCard = document.querySelector(".popup__input-save_type_nameNew");
+const inputImageCard = document.querySelector(
+  ".popup__input-save_type_aboutNew"
+);
+
 const buttonOpenEditProfile = document.querySelector(".profile__button");
-const buttonCloseEditProfile = document.querySelector(".popup__close");
 
 const inputNameUser = document.querySelector(".popup__input-save");
 const inputNameProfession = document.querySelector(
@@ -18,8 +21,6 @@ const inputNameProfession = document.querySelector(
 );
 
 const buttonOpenEditCard = document.querySelector(".profile__button-add");
-const buttonSaveEditCard = document.querySelector(".popup__safe-New");
-const buttonCloseEditCard = document.querySelector(".popup__element-close");
 
 const initialCards = [
   {
@@ -56,13 +57,18 @@ const enableValidation = {
   errorClass: "popup__error_visible",
 };
 
+const newPopupCardImage = new PopupWithImage(".popup_image-window");
+
 const handleCardClick = (parameters) => {
-  const newPopupCardImage = new PopupWithImage(".popup_image-window");
   newPopupCardImage.open(parameters);
 };
 
+const buttonCloseImg = document.querySelector('.popup__closeImg')
+buttonCloseImg.addEventListener('click', () => {
+  newPopupCardImage.close()
+})
 
-function addСards(card) {
+function createСards(card) {
   const newCard = new Card(card, ".element__list", handleCardClick);
   return newCard.generateCard();
 }
@@ -71,7 +77,7 @@ const cardSection = new Section(
   {
     items: initialCards,
     renderer: (card) => {
-      cardSection.addItem(addСards(card));
+      cardSection.addItem(createСards(card));
     },
   },
   ".element"
@@ -81,11 +87,16 @@ cardSection.renderItems();
 
 // добавление карточки
 const newPopupAddCard = new PopupWithForm(".popup_add-card", {
-  handleFormSubmit: (input) => {
-    cardSection.addItem(addСards(input.name, input.link));
+  handleFormSubmit: (data) => {
+    cardSection.addItem(createСards({name:data.name, link:data.link}));
   },
 });
-newPopupAddCard.setEventListeners();
+
+buttonOpenEditCard.addEventListener("click", () => {
+  newPopupAddCard.open()
+  inputTextCard.value = "";
+  inputImageCard.value = "";
+});
 
 // добавление профиля
 const newPopupAddProfil = new PopupWithForm(".popup_edit-profile", {
@@ -94,38 +105,16 @@ const newPopupAddProfil = new PopupWithForm(".popup_edit-profile", {
   }
 })
 
-newPopupAddProfil.setEventListeners()
+buttonOpenEditProfile.addEventListener("click", () => {
+  newPopupAddProfil.open(),
+  inputNameUser.value = newUserInfo.getUserInfo().nameProfil;
+  inputNameProfession.value = newUserInfo.getUserInfo().nameJob;
+});
 
 const newUserInfo = new UserInfo({
   nameProfil: ".profile__name",
   profilText: ".profile__text",
 });
-
-newUserInfo.getUserInfo();
-
-const newPopupProfil = new Popup(".popup_edit-profile");
-buttonOpenEditProfile.addEventListener("click", () => {
-  newPopupProfil.open(".popup_edit-profile");
-  inputNameUser.value = newUserInfo.getUserInfo().nameProfil;
-  inputNameProfession.value = newUserInfo.getUserInfo().nameJob;
-});
-
-newPopupProfil.setEventListeners()
-
-buttonCloseEditProfile.addEventListener("click", () =>
-  newPopupProfil.close(".popup_edit-profile")
-);
-
-const newPopupCard = new Popup(".popup_add-card");
-buttonOpenEditCard.addEventListener("click", () => {
-  buttonSaveEditCard.disabled = true;
-  newPopupCard.open(".popup_add-card");
-});
-
-buttonCloseEditCard.addEventListener("click", () => {
-  newPopupCard.close(".popup_add-card");
-});
-
 
 // Валидацию
 const forms = document.querySelectorAll(".popup__input");
