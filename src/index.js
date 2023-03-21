@@ -14,6 +14,7 @@ const inputImageCard = document.querySelector(
 );
 
 const buttonOpenEditProfile = document.querySelector(".profile__button");
+const buttonSafeCard = document.querySelector('.popup__safe-New')
 
 const inputNameUser = document.querySelector(".popup__input-save");
 const inputNameProfession = document.querySelector(
@@ -61,6 +62,7 @@ const newPopupCardImage = new PopupWithImage(".popup_image-window");
 
 const handleCardClick = (parameters) => {
   newPopupCardImage.open(parameters);
+  newPopupCardImage.setEventListeners()
 };
 
 const buttonCloseImg = document.querySelector('.popup__closeImg')
@@ -68,7 +70,7 @@ buttonCloseImg.addEventListener('click', () => {
   newPopupCardImage.close()
 })
 
-function createСards(card) {
+function createСard(card) {
   const newCard = new Card(card, ".element__list", handleCardClick);
   return newCard.generateCard();
 }
@@ -77,7 +79,7 @@ const cardSection = new Section(
   {
     items: initialCards,
     renderer: (card) => {
-      cardSection.addItem(createСards(card));
+      cardSection.addItem(createСard(card));
     },
   },
   ".element"
@@ -88,12 +90,14 @@ cardSection.renderItems();
 // добавление карточки
 const newPopupAddCard = new PopupWithForm(".popup_add-card", {
   handleFormSubmit: (data) => {
-    cardSection.addItem(createСards({name:data.name, link:data.link}));
+    cardSection.addItem(createСard({name:data.name, link:data.link}));
   },
 });
 
 buttonOpenEditCard.addEventListener("click", () => {
   newPopupAddCard.open()
+  buttonSafeCard.setAttribute('disabled', true)
+  newPopupAddCard.setEventListeners()
   inputTextCard.value = "";
   inputImageCard.value = "";
 });
@@ -107,6 +111,7 @@ const newPopupAddProfil = new PopupWithForm(".popup_edit-profile", {
 
 buttonOpenEditProfile.addEventListener("click", () => {
   newPopupAddProfil.open(),
+  newPopupAddProfil.setEventListeners()
   inputNameUser.value = newUserInfo.getUserInfo().nameProfil;
   inputNameProfession.value = newUserInfo.getUserInfo().nameJob;
 });
