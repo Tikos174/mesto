@@ -62,8 +62,9 @@ const newPopupCardImage = new PopupWithImage(".popup_image-window");
 
 const handleCardClick = (parameters) => {
   newPopupCardImage.open(parameters);
-  newPopupCardImage.setEventListeners()
 };
+
+newPopupCardImage.setEventListeners()
 
 const buttonCloseImg = document.querySelector('.popup__closeImg')
 buttonCloseImg.addEventListener('click', () => {
@@ -97,10 +98,11 @@ const newPopupAddCard = new PopupWithForm(".popup_add-card", {
 buttonOpenEditCard.addEventListener("click", () => {
   newPopupAddCard.open()
   buttonSafeCard.setAttribute('disabled', true)
-  newPopupAddCard.setEventListeners()
   inputTextCard.value = "";
   inputImageCard.value = "";
 });
+
+newPopupAddCard.setEventListeners()
 
 // добавление профиля
 const newPopupAddProfil = new PopupWithForm(".popup_edit-profile", {
@@ -111,10 +113,11 @@ const newPopupAddProfil = new PopupWithForm(".popup_edit-profile", {
 
 buttonOpenEditProfile.addEventListener("click", () => {
   newPopupAddProfil.open(),
-  newPopupAddProfil.setEventListeners()
   inputNameUser.value = newUserInfo.getUserInfo().nameProfil;
   inputNameProfession.value = newUserInfo.getUserInfo().nameJob;
 });
+
+newPopupAddProfil.setEventListeners()
 
 const newUserInfo = new UserInfo({
   nameProfil: ".profile__name",
