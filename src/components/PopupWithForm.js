@@ -7,6 +7,8 @@ class PopupWithForm extends Popup {
     this._formSubmit = this._popup.querySelector(".popup__input");
     this._formSafeSubmit = this._popup.querySelector(".popup__safe");
     this._formListInput = this._popup.querySelectorAll(".popup__input-save");
+    this._formSafeSubmitText = this._formSafeSubmit.textContent
+
   }
 
   _getInputValues() {
@@ -17,6 +19,14 @@ class PopupWithForm extends Popup {
     });
     
     return this._formValues;
+  }
+
+  loadingData(){
+    this._formSafeSubmit.textContent = 'Сохранение...'
+  }
+
+  endLoadingData(){
+    this._formSafeSubmit.textContent = this._formSafeSubmitText
   }
 
   setEventListeners() {

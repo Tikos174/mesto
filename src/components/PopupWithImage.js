@@ -7,7 +7,7 @@ class PopupWithImage extends Popup{
     this._text = document.querySelector(".popup__text-profil");
   }
 
-  open({name, link}) {
+  open(name, link) {
     super.open();
     this._link.src = link
     this._link.alt = name

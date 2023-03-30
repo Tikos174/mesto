@@ -15,13 +15,18 @@
       <main class="main">
         <section class="profile">
           <div class="profile__blocks">
-            <div class="profile__avatar"></div>
+            <div class="profile__avatar">
+              <img class="profile__img" src="#" alt="Логотип" />
+            </div>
             <div class="profile__info">
               <div class="profile__info-block">
-                <h1 class="profile__name">Жак-Ив Кусто</h1>
-                <button type="button" class="profile__button openPopUp"></button>
+                <h1 class="profile__name"></h1>
+                <button
+                  type="button"
+                  class="profile__button openPopUp"
+                ></button>
               </div>
-              <p class="profile__text">Исследователь океана</p>
+              <p class="profile__text"></p>
             </div>
           </div>
           <button type="button" class="profile__button-add openPopUp"></button>
@@ -34,7 +39,10 @@
                 <img alt="#" class="element__image" src="#" />
                 <div class="element__block-text">
                   <h2 class="element__text"></h2>
-                  <button type="button" class="element__like"></button>
+                  <div class="element__position-like">
+                    <button type="button" class="element__like"></button>
+                    <span class="element__counter-like">0</span>
+                  </div>
                 </div>
               </li>
             </template>
@@ -75,21 +83,30 @@
               />
               <span id="about-link-error" class="popup__input-error"></span>
             </div>
-            <button type="submit" class="popup__safe popup__button">Сохранить</button>
+            <button type="submit" class="popup__safe popup__button">
+              Сохранить
+            </button>
           </form>
         </div>
       </div>
       <div class="popup popup_add-card">
         <div class="popup__container">
-          <button type="button" class="popup__close popup__element-close"></button>
+          <button
+            type="button"
+            class="popup__close popup__element-close"
+          ></button>
           <h3 class="popup__text">Новое место</h3>
-          <form name="name-input" class="popup__input popup__input-New" novalidate>
+          <form
+            name="name-input"
+            class="popup__input popup__input-New"
+            novalidate
+          >
             <div class="popup__input-list">
               <input
-              id="names-link" 
-              required
-              minlength="2"
-              maxlength="40"
+                id="names-link"
+                required
+                minlength="2"
+                maxlength="40"
                 type="text"
                 name="name"
                 class="popup__input-save popup__input-save_type_nameNew"
@@ -108,7 +125,10 @@
               />
               <span id="abouts-link-error" class="popup__input-error"></span>
             </div>
-            <button type="submit" class="popup__safe popup__safe-New popup__button">
+            <button
+              type="submit"
+              class="popup__safe popup__safe-New popup__button"
+            >
               Сохранить
             </button>
           </form>
@@ -123,7 +143,44 @@
           <p class="popup__text-profil">#</p>
         </div>
       </div>
+      <div class="popup popup__avatar">
+        <div class="popup__container popup__container-avatar">
+          <button type="button" class="popup__close"></button>
+          <h3 class="popup__text">Обновить аватар</h3>
+          <form name="name-input" class="popup__input" novalidate>
+            <div class="popup__input-list">
+              <input
+                id="abouts-link"
+                type="url"
+                name="avatar"
+                class="popup__input-save popup__input-save_type_aboutNew"
+                placeholder="Сcылка на аватар"
+              />
+              <span id="abouts-link-error" class="popup__input-error"></span>
+            </div>
+            <button
+              type="submit"
+              class="popup__safe popup__safe-New popup__button"
+            >
+              Сохранить
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="popup popup__delete">
+        <div class="popup__container popup__deletecard">
+          <button type="button" class="popup__close"></button>
+          <h3 class="popup__text popup__text_fix">Вы уверены?</h3>
+          <form name="name-input" class="popup__input popup__formDelete">
+            <button type="submit" class="popup__safe popup__approval-delete">
+              Да
+            </button>
+          </form>
+          <!-- <button type="submit" class="popup__safe popup__approval-delete">
+            Да
+          </button> -->
+        </div>
+      </div>
     </div>
-
   </body>
 </html>
