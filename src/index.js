@@ -113,7 +113,7 @@ const createСard = (data) => {
 };
 
 // Поп-ап Удаления карточки
-const PopupDeteleCard = new PopupWithConfirmation(".popup__delete")
+const PopupDeteleCard = new PopupWithConfirmation(".popup_delete")
 
 PopupDeteleCard.setEventListeners();
 
@@ -211,7 +211,7 @@ buttonOpenEditProfile.addEventListener("click", () => {
 newPopupAddProfil.setEventListeners();
 
 // редактирование аватара
-const newPopupAvatar = new PopupWithForm(".popup__avatar", {
+const newPopupAvatar = new PopupWithForm(".popup_avatar", {
   handleFormSubmit: ({avatar}) => {
     newUserInfo.setUserAvatar({avatar});
     newPopupAvatar.loadingData()
