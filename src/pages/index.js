@@ -1,12 +1,12 @@
-import "../src/index.css";
-import { Card } from "./components/Card.js";
-import { FormValidator } from "./components/FormValidator.js";
-import { Section } from "./components/Section.js";
-import { PopupWithImage } from "./components/PopupWithImage.js";
-import { PopupWithForm } from "./components/PopupWithForm.js";
-import { UserInfo } from "./components/UserInfo.js";
-import { Api } from "./components/Api";
-import { PopupWithConfirmation } from "./components/PopupWithConfirmation.js";
+import "./index.css";
+import { Card } from "../components/Card.js";
+import { FormValidator } from "../components/FormValidator.js";
+import { Section } from "../components/Section.js";
+import { PopupWithImage } from "../components/PopupWithImage.js";
+import { PopupWithForm } from "../components/PopupWithForm.js";
+import { UserInfo } from "../components/UserInfo.js";
+import { Api } from "../components/Api";
+import { PopupWithConfirmation } from "../components/PopupWithConfirmation.js";
 
 const inputTextCard = document.querySelector(".popup__input-save_type_nameNew");
 const inputImageCard = document.querySelector(
@@ -70,6 +70,14 @@ const api = new Api({
     authorization: "0c87e813-0908-4dae-acb9-98879f391c4e",
   },
 });
+
+// Promise.all([api.getinfoProfil(), api.getInitialCards()]).then(
+//   ([data, card]) => {
+//     userId = data;
+//     newUserInfo.setUserInfo(data);
+//     section.renderItems(card);
+//   }
+// );
 
 // Вынос данных в глобальную область
 let cards;
@@ -154,8 +162,8 @@ const newPopupAddCard = new PopupWithForm(".popup_add-card", {
   handleFormSubmit: (data) => {
     newPopupAddCard.loadingData()
     api.addCard(data)
-    .then((data) => {
-      cards.addItem(createСard({ name: data.name, link: data.link }));
+    .then((inputdata) => {
+      cards.addItem(createСard(inputdata));
     })
     .catch((err) => console.log(err))
     .finally(() => {
