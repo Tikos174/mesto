@@ -14,8 +14,8 @@ class PopupWithConfirmation extends Popup {
     });
   }
 
-  functionSubmit(activ) {
-    this._handleSubmit = activ;
+  setSubmitHandler(submitHandler) {
+    this._handleSubmit = submitHandler;
   }
 }
 

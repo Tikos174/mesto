@@ -4,7 +4,7 @@ class PopupWithForm extends Popup {
   constructor(popupSelector, {handleFormSubmit}) {
     super(popupSelector);
     this._handleFormSubmit = handleFormSubmit;
-    this._formSubmit = this._popup.querySelector(".popup__input");
+    this._formElement = this._popup.querySelector(".popup__input");
     this._formSafeSubmit = this._popup.querySelector(".popup__safe");
     this._formListInput = this._popup.querySelectorAll(".popup__input-save");
     this._formSafeSubmitText = this._formSafeSubmit.textContent
@@ -21,6 +21,11 @@ class PopupWithForm extends Popup {
     return this._formValues;
   }
 
+  close() {
+    super.close()
+    this._formElement.reset()
+  }
+
   loadingData(){
     this._formSafeSubmit.textContent = 'Сохранение...'
   }
@@ -30,10 +35,9 @@ class PopupWithForm extends Popup {
   }
 
   setEventListeners() {
-    this._formSubmit.addEventListener("submit", (evt) => {
+    this._formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._handleFormSubmit(this._getInputValues());
-      super.close()
     });
     super.setEventListeners();
 

@@ -13,9 +13,9 @@ class UserInfo {
         return objectDataProfil;
     }
     
-    setUserInfo({prof, job}){
-        this._nameProfil.textContent = prof;
-        this._jobText.textContent = job;
+    setUserInfo(profil){
+        this._nameProfil.textContent = profil.name;
+        this._jobText.textContent = profil.about;
     }
 
     setUserAvatar({avatar}) {

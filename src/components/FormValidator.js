@@ -2,47 +2,44 @@ class FormValidator {
   constructor(config, form) {
     this._config = config;
     this._form = form;
-    this.disabledButton()
+
+    this._submitButton = this._form.querySelector(this._config.submitButtonSelector);
+    this._inputList = Array.from(this._form.querySelectorAll(this._config.inputSelector));
   }
 
   enableValidation(){
-    const imputList = Array.from(this._form.querySelectorAll(this._config.inputSelector));
-    imputList.forEach((item) => {
+    this._inputList.forEach((item) => {
       item.addEventListener("input", this._activeValidation.bind(this));
     });
+    this._submitButton.setAttribute("disabled", true);
   }
  
   _activeValidation(event){
     this._handleFormAddInput(event)
-    this._disabledButtonSafe()
-  }
-
-  disabledButton(){
-    const buttonSafeCard = document.querySelector('.popup__safe-New')
-    buttonSafeCard.setAttribute('disabled', true)
+    this._toggleButtonState()
   }
 
   _handleFormAddInput(event) {
     const input = event.target;
     const inputId = input.id;
-    const errorText = document.querySelector(`#${inputId}-error`);
+    this._errorText = this._form.querySelector(`#${inputId}-error`);
   
     if (input.validity.valid) {
       input.classList.remove(this._config.errorClass);
-      errorText.textContent = "";
+      this._errorText.textContent = "";
     } else {
       input.classList.add(this._config.errorClass);
-      errorText.textContent = input.validationMessage;
+      this._errorText.textContent = input.validationMessage;
     }
   }
 
-  _disabledButtonSafe () {
-    const buttonClickSafe = this._form.querySelector(this._config.submitButtonSelector);
+  _toggleButtonState () {
+
     const buttonSwitch = this._form.checkValidity();
   
-    buttonClickSafe.disabled = !buttonSwitch;
+    this._submitButton.disabled = !buttonSwitch;
   
-    buttonClickSafe.classList.toggle(this._config.inactiveButtonClass, !buttonSwitch);
+    this._submitButton.classList.toggle(this._config.inactiveButtonClass, !buttonSwitch);
   }
 
 }

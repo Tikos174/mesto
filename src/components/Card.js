@@ -1,5 +1,6 @@
 class Card {
-  constructor(elementClass, data, userId, {handleCardClick, handlePopupDeleteCard, handleLike}) {
+  constructor(elementClass, data, userId, {templateSelector, handleCardClick, handlePopupDeleteCard, handleLike}) {
+    this._templateSelector = templateSelector;
     this._elementClass = elementClass;
     this._data = data
     this._name = data.name;
@@ -17,7 +18,7 @@ class Card {
   }
 
   _getTemplate() {
-    const cardTemplate = document.querySelector("#element-li").content;
+    const cardTemplate = document.querySelector(this._templateSelector).content;
     const elementBlockCard = cardTemplate.cloneNode(true);
 
     return elementBlockCard;
@@ -43,7 +44,7 @@ class Card {
 
     this._checkLike()
 
-    this.numberLike(this._likes)
+    this.setLikesNumber(this._likes)
 
     return this._cardTemplate;
   }
@@ -78,7 +79,7 @@ class Card {
     }
   }
 
-  numberLike(data) {
+  setLikesNumber(data) {
     this._likes = data
     this._infolike.textContent = this._likes.length;
   }
