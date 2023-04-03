@@ -11,12 +11,12 @@ class FormValidator {
     this._inputList.forEach((item) => {
       item.addEventListener("input", this._activeValidation.bind(this));
     });
-    this._submitButton.setAttribute("disabled", true);
+    this.toggleButtonState()
   }
  
   _activeValidation(event){
     this._handleFormAddInput(event)
-    this._toggleButtonState()
+    this.toggleButtonState()
   }
 
   _handleFormAddInput(event) {
@@ -33,8 +33,7 @@ class FormValidator {
     }
   }
 
-  _toggleButtonState () {
-
+  toggleButtonState () {
     const buttonSwitch = this._form.checkValidity();
   
     this._submitButton.disabled = !buttonSwitch;

@@ -125,6 +125,7 @@ const newPopupAddCard = new PopupWithForm(".popup_add-card", {
 
 buttonOpenEditCard.addEventListener("click", () => {
   newPopupAddCard.open();
+  validationInputAddCard.toggleButtonState();
 });
 
 newPopupAddCard.setEventListeners();
@@ -181,6 +182,7 @@ const newPopupAvatar = new PopupWithForm(".popup_avatar", {
 
 buttonOpenPopupAvatar.addEventListener("click", () => {
   newPopupAvatar.open();
+  validationInputAddAvatar.toggleButtonState();
 });
 
 newPopupAvatar.setEventListeners();
